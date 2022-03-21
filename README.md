@@ -14,6 +14,14 @@ https://docs.flutter.dev/
 
 https://docs.flutter.dev/get-started/install
 
+
+Scaffold
+
+https://api.flutter.dev/flutter/material/Scaffold-class.html
+
+
+
+
 MaterialApp
 https://material.io/design
 
