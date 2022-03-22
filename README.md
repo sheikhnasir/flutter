@@ -29,3 +29,8 @@ https://material.io/design
 
 To generate Icon
 https://appicon.co/
+
+
+Layouts
+
+https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e
