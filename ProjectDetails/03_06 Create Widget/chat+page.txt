@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+import 'package:chat_app/Widget/chat_bubble.dart';
+
+class ChatPage extends StatelessWidget {
+  const ChatPage({Key? key}) : super(key: key);
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text('Hi Sheikh!'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                print('Icon pressed!');
+              },
+              icon: Icon(Icons.logout))
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              children: [
+                //TODO: Remove duplicated code
+                ChatBubble(alignment:Alignment.centerLeft, message: "Helo there"),
+                ChatBubble(alignment:Alignment.centerRight, message: "Welcome"),
+               // getChatBubble(Alignment.centerLeft,"Helo there"),
+               // getChatBubble(Alignment.centerRight,"Welcome Back"),
+              ],
+            ),
+          ),
+          Container(
+            height: 100,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.send,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+          )
+        ],
+      ),
+    );
+  }
+}
