@@ -1,0 +1,127 @@
+import 'package:flutter/material.dart';
+
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
+
+  final _formkey = GlobalKey<FormState>();
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void loginUser() {
+    if (_formkey.currentState != null && _formkey.currentState!.validate()) {
+      print(userNameController.text);
+      print(passwordController.text);
+
+      print('login successful!');
+    } else {
+      print('not successful!');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      drawer: Drawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('Button clicked');
+        },
+      ),
+      body: Center(
+        child: Form(
+          key: _formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Let\'s sign you in!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.brown,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.5),
+              ),
+              Text(
+                'Welcome back! \n You\'ve been missed!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.blueGrey),
+              ),
+              Image.network(
+                'https://logo.clearbit.com/https://www.um.edu.my/',
+                height: 200,
+              ),
+
+              // Username
+              TextFormField(
+                validator: (value) {
+                  if (value != null && value.isNotEmpty && value.length < 5) {
+                    return "Your username should be more than 5 characters";
+                  } else if (value != null && value.isEmpty) {
+                    return "Please type your username";
+                  }
+                  return null;
+                },
+                controller: userNameController,
+                decoration: InputDecoration(
+                  hintText: 'Add your Username',
+                  hintStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 24),
+
+              // Password
+              TextFormField(
+                validator: (value) {
+                  if (value != null && value.isEmpty && value.length < 5) {
+                    return "Your password should be more than 5 characters";
+                  } else if (value != null && value.isEmpty) {
+                    return "Please type your password";
+                  }
+                  return null;
+                },
+                controller: passwordController,
+                onChanged: (value) {
+                  print('value= $value');
+                },
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Enter your Password',
+                  hintStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+
+              ElevatedButton(
+                onPressed: loginUser,
+                child: Text(
+                  'Login',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
+                ),
+              ),
+
+              GestureDetector(
+                onTap: () {
+                  print('https://um.edu.my');
+                },
+                child: const Text(
+                  'https://um.edu.my',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
